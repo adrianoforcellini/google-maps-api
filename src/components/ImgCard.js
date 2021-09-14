@@ -18,7 +18,7 @@ const Title = styled.div`
 const ImgCard = ({ photo }) => (
   <Card photo={photo}>
     <Title>Nome</Title>
-    <img src={photo}/>
+    <img alt="imagens dos restaurantes" src={photo}/>
   </Card>
 );
 

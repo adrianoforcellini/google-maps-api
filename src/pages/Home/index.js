@@ -3,12 +3,12 @@ import { Container, Search, Input, Wrapper, CarouselTitle } from "./styles";
 import MaterialIcon from "@material/react-material-icon";
 import Slider from "react-slick";
 import Card from "../../components/ImgCard";
-import imgsrc from '../../OIP.jpeg' ;
+import imgsrc from "../../OIP.jpeg";
 
 const Home = () => {
   const [input, setInput] = useState("");
-//   const imgsrc =
-//     "https://th.bing.com/th/id/OIP.E0J17-Lt3pwbL1SjtB1-mwHaE7?pid=ImgDet&rs=1";
+  //   const imgsrc =
+  //     "https://th.bing.com/th/id/OIP.E0J17-Lt3pwbL1SjtB1-mwHaE7?pid=ImgDet&rs=1";
 
   const settings = {
     dots: false,
@@ -34,25 +34,25 @@ const Home = () => {
         <CarouselTitle>NA SUA ÁREA</CarouselTitle>
         <Slider {...settings}>
           <div>
-            <Card alt="imagens de restaurantes" photo={imgsrc} />
+            <Card photo={imgsrc} />
           </div>{" "}
           <div>
-          <Card alt="imagens de restaurantes" photo={imgsrc} />
+            <Card photo={imgsrc} />
           </div>{" "}
           <div>
-          <Card alt="imagens de restaurantes" photo={imgsrc} />
+            <Card photo={imgsrc} />
           </div>{" "}
           <div>
-            <Card alt="imagens de restaurantes" photo={imgsrc} />
+            <Card photo={imgsrc} />
           </div>{" "}
           <div>
-            <Card alt="imagens de restaurantes" photo={imgsrc} />
+            <Card photo={imgsrc} />
           </div>{" "}
           <div>
-            <Card alt="imagens de restaurantes" photo={imgsrc} />
+            <Card photo={imgsrc} />
           </div>{" "}
           <div>
-          <Card alt="imagens de restaurantes" photo={imgsrc} />
+            <Card photo={imgsrc} />
           </div>
         </Slider>
       </Container>
