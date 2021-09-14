@@ -6,11 +6,12 @@ import imgsrc from "../../OIP.jpeg";
 import Card from "../../components/ImgCard";
 import RestaurantCard from "../../components/RestaurantCard";
 import Modal from "../../components/Modal/index";
-import Map from '../../components/Map/index';
+import Map from "../../components/Map/index";
 
 const Home = () => {
-  const [input, setInput] = useState("");
+  const [inputValue, setInput] = useState("");
   const [modalOpened, setModalOpened] = useState(true);
+  const [query, setQuery] = useState("");
 
   const settings = {
     dots: false,
@@ -26,11 +27,22 @@ const Home = () => {
     setInput(e.target.value);
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      setQuery(inputValue);
+    }
+  };
+
   return (
     <Wrapper>
       <Container>
         <Search>
-          <Input type="text" value={input} onChange={handleChange} />
+          <Input
+            type="text"
+            value={inputValue}
+            onChange={handleChange}
+            onKeyPress={handleKeyPress}
+          />
           <MaterialIcon role="button" icon="search" />
         </Search>
         <CarouselTitle>NA SUA ÁREA</CarouselTitle>
@@ -43,9 +55,9 @@ const Home = () => {
           <Card photo={imgsrc} />
         </Slider>
         <RestaurantCard restaurante={imgsrc} />
-      {/* <Modal open={modalOpened} onClose={()=> setModalOpened(!modalOpened)}/> */}
       </Container>
-      <Map/>
+      <Modal open={modalOpened} onClose={() => setModalOpened(!modalOpened)} />
+      <Map query={query} />
     </Wrapper>
   );
 };

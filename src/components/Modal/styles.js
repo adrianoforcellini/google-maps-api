@@ -6,7 +6,6 @@ export const Overlay = styled.div`
   right: 0;
   left: 0;
   bottom: 0;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,10 +26,7 @@ export const Dialog = styled.div`
   max-height: calc(100% - 144px);
   width: 500px;
   padding: 24px;
-
   background-color: #ffffff;
-
   box-shadow: 0px 0px 32px rgba(78, 89, 131, 0.2);
   border-radius: 8px;
 `;
-Dialog.displayName = 'Dialog';
