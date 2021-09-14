@@ -4,6 +4,7 @@ import MaterialIcon from "@material/react-material-icon";
 import Slider from "react-slick";
 import Card from "../../components/ImgCard";
 import imgsrc from "../../OIP.jpeg";
+import RestaurantCard from "../../components/RestaurantCard";
 
 const Home = () => {
   const [input, setInput] = useState("");
@@ -33,28 +34,14 @@ const Home = () => {
         </Search>
         <CarouselTitle>NA SUA ÁREA</CarouselTitle>
         <Slider {...settings}>
-          <div>
             <Card photo={imgsrc} />
-          </div>{" "}
-          <div>
             <Card photo={imgsrc} />
-          </div>{" "}
-          <div>
             <Card photo={imgsrc} />
-          </div>{" "}
-          <div>
             <Card photo={imgsrc} />
-          </div>{" "}
-          <div>
             <Card photo={imgsrc} />
-          </div>{" "}
-          <div>
             <Card photo={imgsrc} />
-          </div>{" "}
-          <div>
-            <Card photo={imgsrc} />
-          </div>
         </Slider>
+        <RestaurantCard/>
       </Container>
     </Wrapper>
   );
