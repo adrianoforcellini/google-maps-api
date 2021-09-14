@@ -6,6 +6,7 @@ import imgsrc from "../../OIP.jpeg";
 import Card from "../../components/ImgCard";
 import RestaurantCard from "../../components/RestaurantCard";
 import Modal from "../../components/Modal/index";
+import Map from '../../components/Map/index';
 
 const Home = () => {
   const [input, setInput] = useState("");
@@ -42,8 +43,9 @@ const Home = () => {
           <Card photo={imgsrc} />
         </Slider>
         <RestaurantCard restaurante={imgsrc} />
-      <Modal open={modalOpened} onClose={()=> setModalOpened(!modalOpened)}/>
+      {/* <Modal open={modalOpened} onClose={()=> setModalOpened(!modalOpened)}/> */}
       </Container>
+      <Map/>
     </Wrapper>
   );
 };
