@@ -2,22 +2,22 @@ import React, { useState } from "react";
 import { Container, Search, Input, Wrapper, CarouselTitle } from "./styles";
 import MaterialIcon from "@material/react-material-icon";
 import Slider from "react-slick";
-import Card from "../../components/ImgCard";
 import imgsrc from "../../OIP.jpeg";
+import Card from "../../components/ImgCard";
 import RestaurantCard from "../../components/RestaurantCard";
+import Modal from "../../components/Modal/index";
 
 const Home = () => {
   const [input, setInput] = useState("");
-  //   const imgsrc =
-  //     "https://th.bing.com/th/id/OIP.E0J17-Lt3pwbL1SjtB1-mwHaE7?pid=ImgDet&rs=1";
+  const [modalOpened, setModalOpened] = useState(true);
 
   const settings = {
     dots: false,
     infinite: true,
     autoplay: true,
-    speed: 300,
-    // slidesToShow: 2,
-    // slidesToScroll: 2,
+    speed: 100,
+    slidesToShow: 3,
+    slidesToScroll: 3,
     adaptiveHeight: true,
   };
 
@@ -34,14 +34,15 @@ const Home = () => {
         </Search>
         <CarouselTitle>NA SUA ÁREA</CarouselTitle>
         <Slider {...settings}>
-            <Card photo={imgsrc} />
-            <Card photo={imgsrc} />
-            <Card photo={imgsrc} />
-            <Card photo={imgsrc} />
-            <Card photo={imgsrc} />
-            <Card photo={imgsrc} />
+          <Card photo={imgsrc} />
+          <Card photo={imgsrc} />
+          <Card photo={imgsrc} />
+          <Card photo={imgsrc} />
+          <Card photo={imgsrc} />
+          <Card photo={imgsrc} />
         </Slider>
-        <RestaurantCard/>
+        <RestaurantCard restaurante={imgsrc} />
+      <Modal open={modalOpened} onClose={()=> setModalOpened(!modalOpened)}/>
       </Container>
     </Wrapper>
   );

@@ -2,11 +2,12 @@ import React from "react";
 import styled from "styled-components";
 
 const Card = styled.div`
-  width: 40vw;
-  height: 40vh;
+  width: 20vw;
+  height: 20vh;
   border-radius: 6px;
   background-image: url(${(props) => props.photo}) ;
   background-size: cover;
+  margin-botton:10%;
 `;
 
 const Title = styled.p`
@@ -16,9 +17,9 @@ const Title = styled.p`
   font-size: 18px;
 `;
 
-const ImgCard = ({ photo }) => (
+const ImgCard = ({ photo, title }) => (
   <Card photo={photo}>
-    <Title>Nome Do Restaurante</Title>
+    <Title>{title}</Title>
   </Card>
 );
 

@@ -4,6 +4,7 @@ import styled from "styled-components";
 const Restaurante = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-top:10%;
 `;
 
 const RestauranteInfo = styled.div`
@@ -23,7 +24,16 @@ const Adress = styled.span`
   font-size: 12px;
 `;
 
-const RestaurantCard = ({ photo }) => (
+
+const RestauranteImg = styled.img`
+  width: 120vw;
+  height: 20vh;
+  border-radius: 6px;
+  background-image: url(${(props) => props.restaurante}) ;
+  background-size: cover;
+  `;
+
+const RestaurantCard = ({ restaurante }) => (
   <Restaurante>
     <RestauranteInfo>
       <Title>
@@ -33,6 +43,7 @@ const RestaurantCard = ({ photo }) => (
         Coronel Francisco Bráz, 1123
       </Adress>
     </RestauranteInfo>
+    <RestauranteImg src={restaurante} alt="restuante-foto"/> 
   </Restaurante>
 );
 
