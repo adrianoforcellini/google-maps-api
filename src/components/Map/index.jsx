@@ -1,18 +1,46 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { GoogleApiWrapper, Map, Marker } from "google-maps-react";
-import { setRestaurants } from "../../redux/modules/restaurants";
+import { setRestaurants, setRestaurant } from "../../redux/modules/restaurants";
 
 export const MapContainer = (props) => {
-  const [map, setMap] = useState("map");
-  const { google, query } = props;
-  const dispatch = useDispatch();
-  const {restaurants} = useSelector(state => state.restaurants)
+  const { google, query, placeId } = props;
+  const [map, setMap] = useState("");
+  // const [restaurant, setRestaurant] = useState("");
 
+  const dispatch = useDispatch();
+  const { restaurants } = useSelector((state) => state.restaurants);
 
   useEffect(() => {
     querySearch(query);
   }, [query]);
+
+  useEffect(() => {
+    console.log(placeId, 'asssssssssssssssssssssssssss') 
+    if(placeId){
+      details(placeId)
+    }
+  }, [placeId]);
+
+  const details = (place) => {
+    const service = new google.maps.places.PlacesService(map);
+    const request = {
+      placeId,
+      fields: [
+        "name",
+        "opening_hours",
+        "formatted_address",
+        "formatted_phone_number",
+      ],
+    };
+
+    service.getDetails(request, (place, status) => {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        console.log(place)
+        dispatch(setRestaurant(place));
+      }
+    });
+  };
 
   const querySearch = (query) => {
     const service = new google.maps.places.PlacesService(map);
@@ -29,6 +57,7 @@ export const MapContainer = (props) => {
       }
     });
   };
+
   const search = (map, center) => {
     const service = new google.maps.places.PlacesService(map);
     const request = {
@@ -54,6 +83,7 @@ export const MapContainer = (props) => {
       centerAroundCurrentLocation
       onReady={onMapReady}
       onRecenter={onMapReady}
+      {...props}
     >
       {restaurants &&
         restaurants.map((restaurant) => (

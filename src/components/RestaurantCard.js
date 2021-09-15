@@ -33,8 +33,8 @@ const RestauranteImg = styled.img`
   background-size: cover;
 `;
 
-const RestaurantCard = ({ restaurant }) => (
-  <Restaurante>
+const RestaurantCard = ({ restaurant, onClick}) => (
+  <Restaurante onClick={onClick} >
     <RestauranteInfo>
       <Title>{restaurant.name}</Title>
       <Adress>{restaurant.vicinity || restaurant.formatted_address}</Adress>

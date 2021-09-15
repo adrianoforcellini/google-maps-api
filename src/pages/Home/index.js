@@ -11,9 +11,10 @@ import Map from "../../components/Map/index";
 
 const Home = () => {
   const [inputValue, setInput] = useState("");
-  const [modalOpened, setModalOpened] = useState(true);
+  const [modalOpened, setModalOpened] = useState(false);
   const [query, setQuery] = useState("");
-  const { restaurants } = useSelector((state) => state.restaurants);
+  const [placeId, setPlaceId] = useState("");
+  const { restaurants, restaurant } = useSelector((state) => state.restaurants);
   // const { restaurant } = useSelector((state) => state.restaurant);
 
   const settings = {
@@ -28,6 +29,11 @@ const Home = () => {
 
   const handleChange = (e) => {
     setInput(e.target.value);
+  };
+
+  const handleOpenModal = (placeId) => {
+    setPlaceId(placeId);
+    setModalOpened(true);
   };
 
   const handleKeyPress = (e) => {
@@ -63,11 +69,24 @@ const Home = () => {
         </Slider>
         {restaurants &&
           restaurants.map((restaurant) => (
-            <RestaurantCard restaurant={restaurant} />
+            <RestaurantCard
+            onClick={ () => handleOpenModal(restaurant.place_id) }
+            restaurant={restaurant}
+            />
           ))}
       </Container>
-      <Modal open={modalOpened} onClose={() => setModalOpened(!modalOpened)} />
-      <Map query={query} />
+      <Modal open={modalOpened} onClose={() => setModalOpened(!modalOpened)}>
+        <p>
+          { restaurant?.name }
+        </p>
+        <p>
+          { restaurant?.formatted_phone_number }
+        </p>
+        <p>
+          { restaurant?.formatted_address }
+        </p>
+      </Modal>
+      <Map query={query} placeId={placeId} />
     </Wrapper>
   );
 };
