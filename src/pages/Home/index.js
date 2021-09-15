@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from 'react-redux';
 import { Container, Search, Input, Wrapper, CarouselTitle } from "./styles";
 import MaterialIcon from "@material/react-material-icon";
 import Slider from "react-slick";
@@ -12,7 +13,8 @@ const Home = () => {
   const [inputValue, setInput] = useState("");
   const [modalOpened, setModalOpened] = useState(true);
   const [query, setQuery] = useState("");
-
+  const {restaurants} = useSelector(state => state.restaurants)
+console.log(restaurants)
   const settings = {
     dots: false,
     infinite: true,
@@ -51,10 +53,11 @@ const Home = () => {
           <Card photo={imgsrc} />
           <Card photo={imgsrc} />
           <Card photo={imgsrc} />
-          <Card photo={imgsrc} />
-          <Card photo={imgsrc} />
-        </Slider>
-        <RestaurantCard restaurante={imgsrc} />
+          </Slider>
+        {restaurants &&
+        restaurants.map((restaurant) => (
+          <RestaurantCard restaurant={restaurant} />
+        ))}
       </Container>
       <Modal open={modalOpened} onClose={() => setModalOpened(!modalOpened)} />
       <Map query={query} />

@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import imgsrc from "../OIP.jpeg";
 
 const Restaurante = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top:10%;
+  margin-top: 10%;
 `;
 
 const RestauranteInfo = styled.div`
@@ -24,26 +25,24 @@ const Adress = styled.span`
   font-size: 12px;
 `;
 
-
 const RestauranteImg = styled.img`
   width: 120vw;
   height: 20vh;
   border-radius: 6px;
-  background-image: url(${(props) => props.restaurante}) ;
+  background-image: url(${(props) => props.restaurante});
   background-size: cover;
-  `;
+`;
 
-const RestaurantCard = ({ restaurante }) => (
+const RestaurantCard = ({ restaurant }) => (
   <Restaurante>
     <RestauranteInfo>
-      <Title>
-      Restaurante Nome
-      </Title>
-      <Adress>
-        Coronel Francisco Bráz, 1123
-      </Adress>
+      <Title>{restaurant.name}</Title>
+      <Adress>{restaurant.vicinity || restaurant.formatted_address}</Adress>
     </RestauranteInfo>
-    <RestauranteImg src={restaurante} alt="restuante-foto"/> 
+    <RestauranteImg
+      src={restaurant.photos ? restaurant.photos[0].getUrl() : imgsrc}
+      alt="restuante-foto"
+    />
   </Restaurante>
 );
 
