@@ -2,12 +2,16 @@ import React from "react";
 import styled from "styled-components";
 
 const Card = styled.div`
-  width: 20vw;
-  height: 20vh;
-  border-radius: 6px;
-  background-image: url(${(props) => props.photo}) ;
+  min-width: 90px;
+  height: 90px;
+  border-radius: 8px;
+  background-image: url(${(props) => props.photo});
   background-size: cover;
-  margin-botton:10%;
+  margin-botton: 10%;
+  p {
+    margin-left: 6px;
+    margin-top: 10px;
+  }
 `;
 
 const Title = styled.p`

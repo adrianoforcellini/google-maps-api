@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import imgsrc from "../OIP.jpeg";
+import imgsrc from "../fundobranco.png";
 
 const Restaurante = styled.div`
   display: flex;
@@ -26,7 +26,7 @@ const Adress = styled.span`
 `;
 
 const RestauranteImg = styled.img`
-  width: 120vw;
+  width: 15vw;
   height: 20vh;
   border-radius: 6px;
   background-image: url(${(props) => props.restaurante});

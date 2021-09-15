@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 import { Container, Search, Input, Wrapper, CarouselTitle } from "./styles";
 import MaterialIcon from "@material/react-material-icon";
 import Slider from "react-slick";
-import imgsrc from "../../OIP.jpeg";
+import imgsrc from "../../fundobranco.png";
 import Card from "../../components/ImgCard";
 import RestaurantCard from "../../components/RestaurantCard";
 import Modal from "../../components/Modal/index";
@@ -13,8 +13,9 @@ const Home = () => {
   const [inputValue, setInput] = useState("");
   const [modalOpened, setModalOpened] = useState(true);
   const [query, setQuery] = useState("");
-  const {restaurants} = useSelector(state => state.restaurants)
-console.log(restaurants)
+  const { restaurants } = useSelector((state) => state.restaurants);
+  // const { restaurant } = useSelector((state) => state.restaurant);
+
   const settings = {
     dots: false,
     infinite: true,
@@ -49,15 +50,21 @@ console.log(restaurants)
         </Search>
         <CarouselTitle>NA SUA ÁREA</CarouselTitle>
         <Slider {...settings}>
-          <Card photo={imgsrc} />
-          <Card photo={imgsrc} />
-          <Card photo={imgsrc} />
-          <Card photo={imgsrc} />
-          </Slider>
+          {restaurants &&
+            restaurants.map((restaurant) => (
+              <Card
+                key={restaurant.place_id}
+                photo={
+                  restaurant.photos ? restaurant.photos[0].getUrl() : imgsrc
+                }
+                title={restaurant.name}
+              />
+            ))}
+        </Slider>
         {restaurants &&
-        restaurants.map((restaurant) => (
-          <RestaurantCard restaurant={restaurant} />
-        ))}
+          restaurants.map((restaurant) => (
+            <RestaurantCard restaurant={restaurant} />
+          ))}
       </Container>
       <Modal open={modalOpened} onClose={() => setModalOpened(!modalOpened)} />
       <Map query={query} />
