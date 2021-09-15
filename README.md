@@ -1,2 +1,6 @@
 ## Site de Busca De Restautantes.
-### ReactJS + Redux + Google Maps JS API +  Google Places API + Styled Components + AWS Amplify
+### ReactJS + Redux + Styled Components +
+### Google Maps JS API +  Google Places API + AWS Amplify
+
+#### Para encontrar os restaurantes próximos á você, basta acessar o site :
+#### https://main.d3a1w8jxuo0174.amplifyapp.com/
